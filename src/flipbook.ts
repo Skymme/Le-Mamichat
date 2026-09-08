@@ -172,6 +172,7 @@ export class Flipbook {
     window.removeEventListener('keydown', this.handleKeydown)
     this.book.removeEventListener('pointerdown', this.handlePointerDown)
     this.book.removeEventListener('pointerup', this.handlePointerUp)
+    this.book.removeEventListener('pointercancel', this.handlePointerCancel)
   }
 
   // --- Rendu --------------------------------------------------------------
@@ -291,6 +292,13 @@ export class Flipbook {
 
   private handlePointerDown = (event: PointerEvent): void => {
     if (event.pointerType === 'mouse') return
+
+    if (isInteractiveTarget(event.target)) {
+      this.pointerStartX = null
+      this.pointerStartY = null
+      return
+    }
+
     this.pointerStartX = event.clientX
     this.pointerStartY = event.clientY
 
@@ -333,4 +341,25 @@ function readDuration(element: Element): number {
   if (raw.endsWith('ms')) return Number.parseFloat(raw) || 0
   if (raw.endsWith('s')) return (Number.parseFloat(raw) || 0) * 1000
   return 900
+}
+
+function isInteractiveTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof Element)) return false
+
+  return Boolean(
+      target.closest(
+          [
+            '[data-no-flip]',
+            '[data-no-page-swipe]',
+            'button',
+            'input',
+            'select',
+            'textarea',
+            'a[href]',
+            'video',
+            'audio',
+            '[contenteditable]:not([contenteditable="false"])',
+          ].join(','),
+      ),
+  )
 }

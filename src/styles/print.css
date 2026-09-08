@@ -4,6 +4,8 @@
    commandes, pas de grain : de l'encre sur du papier.
    ========================================================= */
 
+.print-journal { display: none; }
+
 @media print {
   @page {
     size: 210mm 284mm; /* meme proportion 0.74 que la page a l'ecran */
@@ -67,6 +69,38 @@
 
   .book::after { display: none; }
 
+  /* Le PDF se compose hors du moteur 3D : aucun verso ne peut disparaitre. */
+  html[data-print-ready] .stage { display: none; }
+
+  .print-journal {
+    display: block;
+    width: 100%;
+  }
+
+  .print-journal__page {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 0.74 / 1;
+    overflow: hidden;
+    background: var(--paper-50);
+    break-after: page;
+    break-inside: avoid;
+  }
+
+  .print-journal__page:last-child { break-after: auto; }
+
+  /* Les onglets de tranche conservent leur cote et leur sens recto/verso. */
+  .print-journal__page--front .thumb {
+    right: 0;
+    box-shadow: -2px 2px 0 0 rgba(31, 27, 22, 0.25);
+  }
+
+  .print-journal__page--back .thumb {
+    left: 0;
+    rotate: 180deg;
+    box-shadow: -2px 2px 0 0 rgba(31, 27, 22, 0.25);
+  }
+
   .sheet {
     position: static;
     width: 100%;
@@ -74,6 +108,7 @@
     transform: none !important;
     transform-style: flat;
     transition: none;
+    z-index: auto !important;
   }
 
   /* Chaque face devient une feuille, dans l'ordre recto/verso. */
@@ -83,13 +118,21 @@
     width: 100%;
     aspect-ratio: 0.74 / 1;
     transform: none !important;
+    -webkit-transform: none !important;
     visibility: visible !important;
     backface-visibility: visible;
+    -webkit-backface-visibility: visible !important;
     box-shadow: none;
     background-image: none;
     background: var(--paper-50);
     break-after: page;
     break-inside: avoid;
+  }
+
+  /* Les faces masquees par la lecture 3D doivent redevenir de vraies pages. */
+  .face[aria-hidden='true'] {
+    display: block !important;
+    visibility: visible !important;
   }
 
   .face:last-child { break-after: auto; }
@@ -102,6 +145,10 @@
     inset: 0;
     overflow: hidden;
   }
+
+  /* L'avertissement de mise en page sert uniquement pendant le developpement. */
+  .page.is-overflowing { outline: 0; }
+  .page.is-overflowing::after { display: none; }
 
   /* Un bon deja detache reste detache sur le papier. */
   .coupon__tear { display: none; }

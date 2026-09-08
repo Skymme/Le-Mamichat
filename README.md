@@ -267,21 +267,14 @@ Côté journal, un `<video>` dont la source manque n'affiche pas un lecteur
 cassé : [src/film.ts](src/film.ts) le remplace par un emplacement dessiné. Il
 n'y a donc rien à changer dans les pages selon que le film est en ligne ou non.
 
-Pour le mettre en ligne, ré-encodez-le — en 720p on descend en général sous les
-30 Mo, et l'ensemble tient alors dans les 100 Mo :
+Les vidéos sont hébergées hors du dépôt. Pour en changer une, mettez à jour son
+URL de lecture, son affiche et son QR code dans les fichiers du journal ; aucun
+MP4 ne doit être déposé dans `public/`.
 
-```bash
-ffmpeg -i public/images/videos/antarctic-2014.mp4 -vf "scale=-2:720" -c:v libx264 -crf 26 -preset slow -c:a aac -b:a 128k -movflags +faststart public/images/videos/antarctic-2014.mp4
-```
-
-Le `-movflags +faststart` compte : sans lui, le navigateur télécharge tout le
-fichier avant de lancer la lecture.
-
-## Photos et vidéos
+## Photos
 
 Tout se dépose dans [public/images/](public/images/LISEZMOI.md), un sous-dossier
-par thème. Les vidéos vont dans `public/images/videos/` : elles sont exclues
-de git (limite de 100 Mo par fichier sur GitHub) mais partent bien avec le site.
+par thème. Les vidéos restent sur leur hébergement externe.
 
 ## Structure
 

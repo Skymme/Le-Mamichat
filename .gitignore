@@ -7,9 +7,8 @@ Thumbs.db
 .env
 .env.*
 
-# Les videos sont trop lourdes pour git (limite GitHub : 100 Mo par fichier).
-# Elles restent dans public/images/videos/ et partent avec le site.
-public/images/videos/
+# Les vidéos sont hébergées hors du dépôt.
+*.mp4
 
 # Identifiants FTP de mise en ligne : jamais dans le depot.
 .env.deploy

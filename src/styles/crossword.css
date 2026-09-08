@@ -26,10 +26,11 @@
   grid-template-rows: repeat(var(--cw-rows, 24), 1fr);
   width: var(--cw-w, 100%);
   height: var(--cw-h, auto);
-  gap: 0;
-  border: 2px solid var(--ink);
-  /* Le fond de grille se voit dans les cases pleines et les filets. */
-  background: var(--blue-deep);
+  /* Une seule géométrie pour l'écran et le PDF : les gouttières réelles
+     s'impriment sans les traits intermittents des ombres fractionnaires. */
+  gap: 1px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
 }
 
 /* --- Cases ---------------------------------------------------------------- */
@@ -40,12 +41,10 @@
   min-height: 0;
   overflow: hidden;
   background: var(--paper-50);
-  box-shadow: 0 0 0 0.5px var(--ink);
 }
 
 .cw-cell--pleine {
   background: var(--blue-deep);
-  box-shadow: none;
 }
 
 /* Mot en cours de saisie. */
@@ -223,4 +222,12 @@
   .crossword__clue { display: none; }
   .cw-cell--mot { background: var(--paper-50); }
   .cw-input:focus { background: transparent; }
+
+  /* Le miroir d'impression clone la grille avec sa largeur calculée pour la
+     fenêtre. On la laisse reprendre exactement la largeur de la page papier. */
+  .print-journal .crossword__grid {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1;
+  }
 }

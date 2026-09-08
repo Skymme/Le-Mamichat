@@ -11,11 +11,12 @@
  */
 
 function placeholder(video: HTMLVideoElement): void {
+  const label = video.dataset.fallbackLabel ?? 'Vidéo indisponible'
   const slot = document.createElement('div')
   slot.className = 'photo__slot photo__slot--wide film__missing'
   slot.innerHTML = `
     <svg class="photo__mark" aria-hidden="true"><use href="#vg-manchot" /></svg>
-    <span class="photo__hint">Le film &middot; à demander à Erick</span>
+    <span class="photo__hint">${label}</span>
   `
   video.replaceWith(slot)
 }
@@ -25,11 +26,13 @@ export function setupFilm(): void {
     // `error` sur <video> ne remonte pas : on ecoute en phase de capture.
     video.addEventListener('error', () => placeholder(video), true)
 
-    // Un fichier absent renvoie souvent une page HTML en 404 : le navigateur
-    // ne declenche alors pas toujours `error`. On verifie donc aussi que des
-    // metadonnees sont bien arrivees.
+    // Seul le film historique a besoin de cette verification supplementaire :
+    // les lecteurs distants peuvent mettre plus de quatre secondes a charger
+    // leurs metadonnees sans etre en erreur.
     window.setTimeout(() => {
-      if (video.isConnected && video.readyState === 0) placeholder(video)
+      if (video.dataset.fallbackCheck === 'true' && video.isConnected && video.readyState === 0) {
+        placeholder(video)
+      }
     }, 4000)
   })
 }

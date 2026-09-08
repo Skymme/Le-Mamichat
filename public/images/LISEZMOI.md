@@ -3,15 +3,16 @@
 Déposez les images dans le sous-dossier qui correspond, puis dites-le moi :
 je remplace les emplacements gris du journal par les vraies photos.
 
-| Dossier | Contenu attendu |
-| --- | --- |
-| `couverture/` | la grande photo de une, le portrait de Mamichat |
-| `tunisie/` | Carthage, Salammbô, le TGM, Gafour, les colonies, la photo de classe |
-| `bateaux/` | Jandira, La Souris-Blanche, Farewell, le Golden Fleece, l'Antarctique |
-| `famille/` | Fabien « Pacha », Michaël, Karine, Marine, Elsa, Zumba, les petits-enfants |
-| `vente-flash/` | les objets de la boutique de la vente flash |
-| `temoignages/` | dessins et mots des petits-enfants (photo ou scan) |
-| `divers/` | tout le reste |
+| Dossier        | Contenu attendu                                                           |
+|----------------|---------------------------------------------------------------------------|
+| `couverture/`  | la grande photo de une, le portrait de Mamichat                           |
+| `tunisie/`     | Carthage, Salammbô, le TGM, Gafour, les colonies, la photo de classe      |
+| `bateaux/`     | Jandira, La Souris-Blanche, Farewell, le Golden Fleece, l'Antarctique     |
+| `famille/`     | Fabien « Pacha », Michaël, Karine, Marine, Elsa, Zumba, les petits-enfants |
+| `vente-flash/` | les objets de la boutique de la vente flash                               |
+| `musique`      | Les couvertures de musiques / karaoké                                     |
+| `temoignages/` | dessins et mots des petits-enfants (photo ou scan)                        |
+| `divers/`      | tout le reste                                                             |
 
 ## Nommage
 
