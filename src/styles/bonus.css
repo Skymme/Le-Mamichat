@@ -1,17 +1,17 @@
 /* Cahier bonus : mêmes encres, mêmes filets, avec des compositions plus denses. */
-.page[data-rub='qigong'] { --sec: var(--blue); --sec-deep: var(--blue-deep); --sec-pale: var(--blue-pale); --sec-on: var(--paper-50); --sec-i: 2; }
-.page[data-rub='philo'] { --sec: var(--blue-night); --sec-deep: var(--blue-deep); --sec-pale: var(--blue-pale); --sec-on: var(--paper-50); --sec-i: 3; }
-.page[data-rub='faits'] { --sec: var(--orange-deep); --sec-deep: var(--orange-deep); --sec-pale: var(--orange-pale); --sec-on: var(--paper-50); --sec-i: 4; }
-.page[data-rub='dossier'] { --sec: var(--blue-night); --sec-deep: var(--blue-night); --sec-pale: var(--paper-200); --sec-on: var(--paper-50); --sec-i: 5; }
+.page[data-rub='qigong'] { --sec: var(--blue); --sec-deep: var(--blue-deep); --sec-pale: var(--blue-pale); --sec-on: var(--paper-50); --sec-i: 8; }
+.page[data-rub='philo'] { --sec: var(--blue-night); --sec-deep: var(--blue-deep); --sec-pale: var(--blue-pale); --sec-on: var(--paper-50); --sec-i: 9; }
+.page[data-rub='faits'] { --sec: var(--orange-deep); --sec-deep: var(--orange-deep); --sec-pale: var(--orange-pale); --sec-on: var(--paper-50); --sec-i: 10; }
+.page[data-rub='dossier'] { --sec: var(--blue-night); --sec-deep: var(--blue-night); --sec-pale: var(--paper-200); --sec-on: var(--paper-50); --sec-i: 11; }
 
-.bonus-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(10rem, .85fr); gap: 1.2cqw; min-height: 0; }
+.bonus-layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(32.45cqw, .85fr); gap: 1.2cqw; min-height: 0; }
 .bonus-copy { font-size: 1.78cqw; line-height: 1.42; }
 .bonus-copy p + p { margin-top: .7cqw; }
 .bonus-copy .dropcap p:first-child::first-letter { color: var(--sec); }
-.qigong__mark { writing-mode: vertical-rl; margin: 0; color: var(--sec); font-family: var(--font-serif); font-size: clamp(5rem, 14cqw, 11rem); line-height: .8; }
+.qigong__mark { writing-mode: vertical-rl; margin: 0; color: var(--sec); font-family: var(--font-serif); font-size: clamp(16.23cqw, 14cqw, 35.7cqw); line-height: .8; }
 .qigong__note { border-top: var(--rule-thick) solid var(--sec); padding-top: .7cqw; font-family: var(--font-mono); font-size: 1.35cqw; line-height: 1.45; }
 .page[data-rub='qigong'] .bonus-layout { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; }
-.page[data-rub='qigong'] .bonus-layout > aside { display: grid; grid-template-columns: minmax(0, 1fr) 12rem; gap: 1cqw; align-items: end; }
+.page[data-rub='qigong'] .bonus-layout > aside { display: grid; grid-template-columns: minmax(0, 1fr) 38.95cqw; gap: 1cqw; align-items: end; }
 .page[data-rub='qigong'] .video-bonus { min-width: 0; }
 .page[data-rub='qigong'] .video-bonus__pending { margin: 0; }
 .video-bonus { margin: 0; }
@@ -29,7 +29,7 @@
 .recipe-card__podium { display: none; }
 .recipe-card__podium circle { fill: var(--paper-50); stroke: currentColor; stroke-width: 1.5; }
 .recipe-card__podium circle:first-child { fill: var(--orange); }
-.recipe-card__podium text { fill: var(--ink); font-family: var(--font-sans); font-size: 10px; font-weight: 800; text-anchor: middle; }
+.recipe-card__podium text { fill: var(--ink); font-family: var(--font-sans); font-size: 2.03cqw; font-weight: 800; text-anchor: middle; }
 .recipe-card--wide { grid-column: span 2; }
 
 .sources { margin-top: .9cqw; padding: .65cqw .8cqw; border-top: var(--rule-med) solid var(--sec); background: var(--paper-200); font-family: var(--font-mono); font-size: 1.2cqw; line-height: 1.45; }
@@ -53,7 +53,7 @@
 .dossier__note { padding: .8cqw; border: var(--rule-box) solid var(--ink); background: var(--paper-50); font-size: 1.6cqw; line-height: 1.4; }
 .dossier__stamp { display: inline-block; margin-bottom: .55cqw; padding: .25em .55em; border: 2px solid var(--orange-deep); color: var(--orange-deep); font-family: var(--font-mono); font-size: 1.3cqw; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; transform: rotate(-2deg); }
 .page[data-rub='dossier'] .dossier { grid-template-columns: 1fr; grid-template-rows: auto; }
-.page[data-rub='dossier'] .dossier__piece { display: grid; grid-template-columns: minmax(0, 1fr) 14rem; align-items: stretch; }
+.page[data-rub='dossier'] .dossier__piece { display: grid; grid-template-columns: minmax(0, 1fr) 45.44cqw; align-items: stretch; }
 .page[data-rub='dossier'] .dossier__piece img { height: 43cqw; max-height: none; object-fit: contain; object-position: center; background: var(--blue-night); }
 .page[data-rub='dossier'] .dossier__piece figcaption { display: flex; flex-direction: column; justify-content: end; }
 .dossier__story { margin-top: .9cqw; padding-top: .75cqw; border-top: var(--rule-thick) solid var(--sec); font-size: 1.64cqw; line-height: 1.38; }
@@ -64,11 +64,11 @@
 .page[data-rub='philo'] .ocean-figure { float: right; width: 30%; margin: 0 0 .8cqw 1cqw; }
 .page[data-rub='philo'] .bonus-copy::after { content: ''; display: block; clear: both; }
 
-.music-rubric__description { margin-top: .45rem; font-family: var(--font-serif); font-size: .72rem; line-height: 1.35; }
+.music-rubric__description { margin-top: 1.46cqw; font-family: var(--font-serif); font-size: 2.34cqw; line-height: 1.35; }
 .music-rubric__player { position: relative; z-index: 2; }
 .music-rubric__ambient-lyrics { left: 52%; right: 3%; bottom: 3%; max-width: 45%; }
-.music-rubric__retro { display: block; margin: .4rem 0 0; }
-.music-rubric__retro { position: relative; z-index: 3; isolation: isolate; padding-top: .65rem; border-top: var(--rule-med) solid var(--music-blue); background: var(--music-paper); }
+.music-rubric__retro { display: block; margin: 1.3cqw 0 0; }
+.music-rubric__retro { position: relative; z-index: 3; isolation: isolate; padding-top: 2.11cqw; border-top: var(--rule-med) solid var(--music-blue); background: var(--music-paper); }
 .music-rubric__print-audio { display: none; }
 .music-rubric__retro .player {
   width: 100%;
@@ -78,28 +78,7 @@
   object-fit: cover;
   margin-top: 0;
 }
-.page--music .music-rubric__hero { min-height: 17rem; }
-
-@media (max-width: 720px) {
-  .bonus-layout, .dossier { grid-template-columns: 1fr; }
-  .bonus-copy, .fait p { font-size: 2.45cqw; }
-  .qigong__mark { position: absolute; right: 7%; top: 14%; font-size: 18cqw; opacity: .16; }
-  .page[data-rub='qigong'] .bonus-layout > aside { grid-template-columns: 1fr; }
-  .recipes { gap: 1.2cqw; }
-  .recipe-card h3 { font-size: 2.7cqw; }
-  .recipe-card ol, .recipe-card ul { font-size: 2.25cqw; }
-  .fait h3 { font-size: 4.2cqw; }
-  .page[data-rub='faits'] .faits { grid-template-columns: 1fr; }
-  .page[data-rub='faits'] .fait:first-child { grid-column: auto; }
-  .page[data-rub='philo'] .ocean-figure { width: 40%; }
-  .sources, .video-bonus figcaption, .dossier__piece figcaption { font-size: 1.8cqw; }
-  .dossier__piece img { max-height: 42cqw; }
-  .page[data-rub='dossier'] .dossier__piece { grid-template-columns: 1fr; }
-  .page[data-rub='dossier'] .dossier__piece img { height: 46cqw; }
-  .music-rubric__ambient-lyrics { left: 50%; right: 2%; bottom: 2%; max-width: 46%; }
-  .page--music .music-rubric__hero { min-height: 0; }
-  .music-rubric__retro .player { width: 100%; }
-}
+.page--music .music-rubric__hero { min-height: 55.17cqw; }
 
 @media print {
   .video-bonus .player { display: none !important; }

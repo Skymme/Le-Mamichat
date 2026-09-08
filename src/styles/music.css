@@ -3,15 +3,17 @@
    ========================================================= */
 
 .music-rubric {
-  --music-paper: #eee7d8;
-  --music-ink: #171411;
-  --music-wine: #7a2847;
-  --music-blue: #1e638b;
-  --music-orange: #cf6327;
+  /* Le journal n'a que trois encres : la rubrique n'en invente pas. Elle se
+     branche sur les jetons, et les trois voix du karaoke s'en derivent. */
+  --music-paper: var(--paper-100);
+  --music-ink: var(--ink);
+  --music-wine: var(--blue-night);
+  --music-blue: var(--blue);
+  --music-orange: var(--orange);
 
-  --voice-a: #a72f5a;
-  --voice-b: #176c9d;
-  --voice-duo: #d06a22;
+  --voice-a: var(--orange-deep);
+  --voice-b: var(--blue);
+  --voice-duo: var(--ink);
 
   position: relative;
   isolation: isolate;
@@ -33,21 +35,21 @@
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.48rem;
+  margin-bottom: 2.6cqw;
+  padding-bottom: 1.56cqw;
 
   border-bottom: 2px solid currentColor;
 
-  font-family: "Archivo", Arial, sans-serif;
-  font-size: 0.64rem;
+  font-family: var(--font-sans);
+  font-size: 2.08cqw;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .music-rubric__catalog {
-  font-family: "Space Mono", monospace;
-  font-size: 0.56rem;
+  font-family: var(--font-mono);
+  font-size: 1.82cqw;
   opacity: 0.52;
 }
 
@@ -57,12 +59,12 @@
 
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: clamp(1rem, 3cqw, 2.4rem);
+  gap: clamp(3.25cqw, 3cqw, 7.79cqw);
   align-items: center;
 
-  min-height: 29rem;
+  min-height: 94.12cqw;
 
-  padding: clamp(1rem, 2.3cqw, 1.6rem);
+  padding: clamp(3.25cqw, 2.3cqw, 5.19cqw);
 
   border: 1px solid rgb(23 20 17 / 0.25);
 
@@ -91,10 +93,10 @@
 .music-rubric__ambient-singer {
   display: block;
 
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.65cqw;
 
-  font-family: "Archivo", Arial, sans-serif;
-  font-size: clamp(0.68rem, 1.4cqw, 0.92rem);
+  font-family: var(--font-sans);
+  font-size: clamp(2.21cqw, 1.4cqw, 2.99cqw);
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -107,8 +109,8 @@
 
   max-width: 16ch;
 
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: clamp(2.7rem, 7.5cqw, 5.8rem);
+  font-family: var(--font-serif);
+  font-size: clamp(8.76cqw, 7.5cqw, 18.82cqw);
   line-height: 0.86;
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -148,18 +150,18 @@
 .music-rubric__disc {
   position: relative;
 
-  width: min(100%, 340px);
+  width: min(100%, 68.97cqw);
   aspect-ratio: 1;
 
   border-radius: 50%;
   overflow: hidden;
   isolation: isolate;
 
-  background: #111;
+  background: var(--ink);
 
   box-shadow:
           0 0 0 1px rgb(0 0 0 / 0.78),
-          0 1.2rem 2.6rem rgb(0 0 0 / 0.20);
+          0 3.89cqw 8.44cqw rgb(0 0 0 / 0.20);
 }
 
 .music-rubric__disc::before {
@@ -175,9 +177,9 @@
   background:
           repeating-radial-gradient(
                   circle at center,
-                  transparent 0 4px,
-                  rgb(255 255 255 / 0.055) 4.5px 5px,
-                  transparent 5.5px 8px
+                  transparent 0 0.81cqw,
+                  rgb(255 255 255 / 0.055) 0.91cqw 1.01cqw,
+                  transparent 1.12cqw 1.62cqw
           );
 
   mix-blend-mode: soft-light;
@@ -237,14 +239,14 @@
 .music-rubric__lyrics-toggle {
   position: absolute;
   z-index: 8;
-  top: 0.8rem;
-  right: 0.8rem;
+  top: 2.6cqw;
+  right: 2.6cqw;
 
   display: inline-flex;
   align-items: center;
-  gap: 0.42rem;
+  gap: 1.36cqw;
 
-  padding: 0.48rem 0.74rem;
+  padding: 1.56cqw 2.4cqw;
 
   border: 1px solid rgb(23 20 17 / 0.34);
   border-radius: 999px;
@@ -252,18 +254,18 @@
   color: var(--music-ink);
   background: rgb(238 231 216 / 0.78);
 
-  font-family: "Archivo", Arial, sans-serif;
-  font-size: 0.64rem;
+  font-family: var(--font-sans);
+  font-size: 2.08cqw;
   font-weight: 800;
 
   cursor: pointer;
 
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(1.42cqw);
 }
 
 .music-rubric__lyrics-toggle svg {
-  width: 1rem;
-  height: 1rem;
+  width: 3.25cqw;
+  height: 3.25cqw;
 
   fill: currentColor;
 }
@@ -280,7 +282,7 @@
 }
 
 .music-rubric__track-head {
-  margin-bottom: 1.4rem;
+  margin-bottom: 4.54cqw;
 }
 
 .music-rubric__title {
@@ -288,8 +290,8 @@
 
   max-width: 12ch;
 
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: clamp(2rem, 5.1cqw, 3.6rem);
+  font-family: var(--font-serif);
+  font-size: clamp(6.49cqw, 5.1cqw, 11.68cqw);
   line-height: 0.92;
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -298,10 +300,10 @@
 .music-rubric__controls {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
-  gap: 1rem;
+  gap: 3.25cqw;
   align-items: center;
 
-  padding: 0.95rem 0;
+  padding: 3.08cqw 0;
 
   border-top: 1px solid rgb(23 20 17 / 0.28);
   border-bottom: 1px solid rgb(23 20 17 / 0.28);
@@ -311,21 +313,21 @@
   display: grid;
   place-items: center;
 
-  width: 3.25rem;
+  width: 10.55cqw;
   aspect-ratio: 1;
   padding: 0;
 
   border: 0;
   border-radius: 50%;
 
-  color: #fff;
+  color: var(--paper-50);
   background: var(--music-wine);
 
   cursor: pointer;
 
   box-shadow:
-          0 0.25rem 0 rgb(63 15 35 / 0.22),
-          0 0.45rem 1rem rgb(0 0 0 / 0.10);
+          0 0.81cqw 0 rgb(63 15 35 / 0.22),
+          0 1.46cqw 3.25cqw rgb(0 0 0 / 0.10);
 
   transition:
           transform 130ms ease,
@@ -343,8 +345,8 @@
 .music-rubric__transport-icon {
   display: block;
 
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 4.06cqw;
+  height: 4.06cqw;
 
   fill: currentColor;
 
@@ -352,7 +354,7 @@
 }
 
 .music-rubric__transport-icon--play {
-  transform: translateX(0.07rem);
+  transform: translateX(0.23cqw);
 }
 
 .music-rubric__transport-icon[hidden] {
@@ -364,12 +366,13 @@
 }
 
 .music-rubric__seek {
+  font-size: 1.6cqw;
   --music-progress: 0%;
 
   display: block;
 
   width: 100%;
-  height: 1.35rem;
+  height: 4.38cqw;
   margin: 0;
 
   appearance: none;
@@ -382,7 +385,7 @@
 }
 
 .music-rubric__seek::-webkit-slider-runnable-track {
-  height: 4px;
+  height: 0.81cqw;
 
   border-radius: 999px;
 
@@ -395,10 +398,10 @@
 }
 
 .music-rubric__seek::-webkit-slider-thumb {
-  width: 0.92rem;
-  height: 0.92rem;
+  width: 2.99cqw;
+  height: 2.99cqw;
 
-  margin-top: calc((4px - 0.92rem) / 2);
+  margin-top: calc((0.81cqw - 2.99cqw) / 2);
 
   appearance: none;
   -webkit-appearance: none;
@@ -410,26 +413,26 @@
 
   box-shadow:
           0 0 0 1px var(--music-wine),
-          0 1px 5px rgb(0 0 0 / 0.25);
+          0 1px 1.01cqw rgb(0 0 0 / 0.25);
 }
 
 .music-rubric__seek::-moz-range-track {
-  height: 4px;
+  height: 0.81cqw;
 
   border-radius: 999px;
   background: rgb(23 20 17 / 0.19);
 }
 
 .music-rubric__seek::-moz-range-progress {
-  height: 4px;
+  height: 0.81cqw;
 
   border-radius: 999px;
   background: var(--music-wine);
 }
 
 .music-rubric__seek::-moz-range-thumb {
-  width: 0.92rem;
-  height: 0.92rem;
+  width: 2.99cqw;
+  height: 2.99cqw;
 
   border: 2px solid var(--music-paper);
   border-radius: 50%;
@@ -440,21 +443,21 @@
 .music-rubric__times {
   display: flex;
   justify-content: flex-end;
-  gap: 0.28rem;
+  gap: 0.91cqw;
 
-  margin-top: 0.08rem;
+  margin-top: 0.26cqw;
 
-  font-family: "Space Mono", monospace;
-  font-size: 0.57rem;
+  font-family: var(--font-mono);
+  font-size: 1.85cqw;
 
   opacity: 0.58;
 }
 
 .music-rubric__shortcut {
-  margin: 0.55rem 0 0;
+  margin: 1.78cqw 0 0;
 
-  font-family: "Space Mono", monospace;
-  font-size: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 1.62cqw;
 
   opacity: 0.42;
 }
@@ -471,7 +474,7 @@
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
 
-  padding: 1rem;
+  padding: 3.25cqw;
 
   background:
           linear-gradient(
@@ -480,7 +483,7 @@
                   rgb(238 231 216 / 0.985)
           );
 
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(2.84cqw);
 
   opacity: 0;
   visibility: hidden;
@@ -506,9 +509,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 3.25cqw;
 
-  padding-bottom: 0.65rem;
+  padding-bottom: 2.11cqw;
 
   border-bottom: 2px solid var(--music-ink);
 }
@@ -516,12 +519,12 @@
 .music-rubric__drawer-kicker {
   display: block;
 
-  margin-bottom: 0.12rem;
+  margin-bottom: 0.39cqw;
 
   color: var(--music-wine);
 
-  font-family: "Archivo", Arial, sans-serif;
-  font-size: 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 1.78cqw;
   font-weight: 900;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -530,15 +533,15 @@
 .music-rubric__lyrics-drawer-head h3 {
   margin: 0;
 
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 4.87cqw;
 }
 
 .music-rubric__drawer-close {
   display: grid;
   place-items: center;
 
-  width: 2.5rem;
+  width: 8.11cqw;
   aspect-ratio: 1;
   padding: 0;
 
@@ -552,8 +555,8 @@
 }
 
 .music-rubric__drawer-close svg {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 3.73cqw;
+  height: 3.73cqw;
 
   fill: none;
   stroke: currentColor;
@@ -566,7 +569,7 @@
 
   min-height: 0;
 
-  padding: 3.8rem 0.6rem 5rem;
+  padding: 12.33cqw 1.95cqw 16.23cqw;
 
   scroll-behavior: smooth;
   overscroll-behavior: contain;
@@ -586,14 +589,14 @@
   --karaoke-color: var(--voice-a);
 
   display: grid;
-  grid-template-columns: 7.4rem minmax(0, 1fr);
-  gap: 0.8rem;
+  grid-template-columns: 24.02cqw minmax(0, 1fr);
+  gap: 2.6cqw;
   align-items: baseline;
 
-  width: min(100%, 46rem);
+  width: min(100%, 149.29cqw);
 
   margin: 0 auto;
-  padding: 0.54rem 0.8rem;
+  padding: 1.75cqw 2.6cqw;
 
   border: 0;
   background: transparent;
@@ -627,8 +630,8 @@
 .music-rubric__lyric-singer {
   color: var(--karaoke-color);
 
-  font-family: "Archivo", Arial, sans-serif;
-  font-size: 0.58rem;
+  font-family: var(--font-sans);
+  font-size: 1.88cqw;
   line-height: 1.35;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -638,8 +641,8 @@
 .music-rubric__lyric-text {
   min-width: 0;
 
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: 1.04rem;
+  font-family: var(--font-serif);
+  font-size: 3.38cqw;
   line-height: 1.35;
   font-weight: 700;
 }
@@ -662,7 +665,7 @@
 }
 
 .music-rubric__lyric-line[data-active="true"] .music-rubric__lyric-text {
-  font-size: 1.14rem;
+  font-size: 3.7cqw;
 }
 
 .music-rubric--voice-a {
@@ -689,12 +692,12 @@
 .music-rubric__credits {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.9rem;
+  gap: 1.14cqw 2.92cqw;
 
-  margin: 0.7rem 0 0;
+  margin: 2.27cqw 0 0;
 
-  font-family: "Archivo", Arial, sans-serif;
-  font-size: 0.64rem;
+  font-family: var(--font-sans);
+  font-size: 2.08cqw;
   line-height: 1.35;
 
   opacity: 0.62;
@@ -703,8 +706,24 @@
 .music-rubric__credits span { display: inline-block; }
 .music-rubric__credits b { font-weight: 800; }
 
-@media (max-width: 720px) {
-  .page--music {
+@media (prefers-reduced-motion: reduce) {
+  .music-rubric__disc-image {
+    animation: none;
+  }
+
+  .music-rubric__lyrics-window {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* --- La mise en page compacte, partout --------------------------------
+   Ces reglages vivaient dans un @media (max-width: 720px) : la page musique
+   n'entrait donc que sur petit ecran, et changeait de composition selon le
+   navigateur. Comme une page doit etre le meme objet a toutes les tailles,
+   c'est cette version-la -- celle qui tient -- qui devient la seule.
+   ------------------------------------------------------------------------- */
+.page--music {
     padding: 5.5%;
   }
 
@@ -715,17 +734,17 @@
 
   .page--music > .colophon {
     flex: 0 0 auto;
-    margin-top: 0.45rem;
+    margin-top: 1.46cqw;
   }
 
   .music-rubric__topline {
-    margin-bottom: 0.45rem;
-    padding-bottom: 0.3rem;
-    font-size: 0.52rem;
+    margin-bottom: 1.46cqw;
+    padding-bottom: 0.97cqw;
+    font-size: 1.69cqw;
   }
 
   .music-rubric__catalog {
-    font-size: 0.46rem;
+    font-size: 1.49cqw;
   }
 
   .music-rubric__hero {
@@ -733,14 +752,14 @@
       minmax(0, 0.68fr)
       minmax(0, 1.32fr);
 
-    column-gap: 0.9rem;
+    column-gap: 2.92cqw;
     row-gap: 0;
 
     align-items: center;
 
     min-height: 0;
 
-    padding: 0.6rem;
+    padding: 1.95cqw;
   }
 
   .music-rubric__disc-zone {
@@ -749,31 +768,31 @@
   }
 
   .music-rubric__disc {
-    width: clamp(96px, 30vw, 130px);
+    width: clamp(19.47cqw, 30vw, 26.37cqw);
     max-width: 100%;
 
     box-shadow:
             0 0 0 1px rgb(0 0 0 / 0.72),
-            0 0.55rem 1.2rem rgb(0 0 0 / 0.16);
+            0 1.78cqw 3.89cqw rgb(0 0 0 / 0.16);
   }
 
   .music-rubric__lyrics-toggle {
-    top: 0.42rem;
-    right: 0.42rem;
+    top: 1.36cqw;
+    right: 1.36cqw;
 
-    gap: 0.28rem;
+    gap: 0.91cqw;
 
-    padding: 0.3rem 0.48rem;
+    padding: 0.97cqw 1.56cqw;
 
-    font-size: 0.48rem;
+    font-size: 1.56cqw;
 
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
 
   .music-rubric__lyrics-toggle svg {
-    width: 0.78rem;
-    height: 0.78rem;
+    width: 2.53cqw;
+    height: 2.53cqw;
   }
 
   .music-rubric__player {
@@ -782,20 +801,20 @@
     /*
      * Séparation explicite avec le disque.
      */
-    padding-top: 1.55rem;
-    padding-left: 0.2rem;
+    padding-top: 5.03cqw;
+    padding-left: 0.65cqw;
   }
 
   .music-rubric__track-head {
     min-width: 0;
-    margin-bottom: 0.55rem;
+    margin-bottom: 1.78cqw;
   }
 
   .music-rubric__title {
     max-width: 100%;
     min-width: 0;
 
-    font-size: clamp(0.98rem, 5vw, 1.32rem);
+    font-size: clamp(3.18cqw, 5vw, 4.28cqw);
     line-height: 0.96;
     letter-spacing: -0.025em;
 
@@ -809,12 +828,12 @@
     min-width: 0;
     max-width: 100%;
 
-    gap: 0.12rem;
+    gap: 0.39cqw;
 
-    margin: 0.38rem 0 0;
+    margin: 1.23cqw 0 0;
     padding: 0;
 
-    font-size: 0.44rem;
+    font-size: 1.43cqw;
     line-height: 1.3;
 
     overflow-wrap: anywhere;
@@ -835,25 +854,25 @@
   .music-rubric__controls {
     grid-template-columns: auto minmax(0, 1fr);
 
-    gap: 0.5rem;
+    gap: 1.62cqw;
 
-    padding: 0.42rem 0;
+    padding: 1.36cqw 0;
   }
 
   .music-rubric__transport {
-    width: 2.35rem;
+    width: 7.63cqw;
 
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
 
     box-shadow:
-            0 0.16rem 0 rgb(63 15 35 / 0.18),
-            0 0.28rem 0.6rem rgb(0 0 0 / 0.08);
+            0 0.52cqw 0 rgb(63 15 35 / 0.18),
+            0 0.91cqw 1.95cqw rgb(0 0 0 / 0.08);
   }
 
   .music-rubric__transport-icon {
-    width: 0.92rem;
-    height: 0.92rem;
+    width: 2.99cqw;
+    height: 2.99cqw;
   }
 
   .music-rubric__seek {
@@ -863,27 +882,27 @@
      */
     touch-action: pan-y;
 
-    height: 1.35rem;
+    height: 4.38cqw;
   }
 
   .music-rubric__seek::-webkit-slider-thumb {
-    width: 0.82rem;
-    height: 0.82rem;
+    width: 2.66cqw;
+    height: 2.66cqw;
 
-    margin-top: calc((4px - 0.82rem) / 2);
+    margin-top: calc((0.81cqw - 2.66cqw) / 2);
   }
 
   .music-rubric__seek::-moz-range-thumb {
-    width: 0.82rem;
-    height: 0.82rem;
+    width: 2.66cqw;
+    height: 2.66cqw;
   }
 
   .music-rubric__times {
-    gap: 0.2rem;
+    gap: 0.65cqw;
 
     margin-top: 0;
 
-    font-size: 0.44rem;
+    font-size: 1.43cqw;
   }
 
   .music-rubric__shortcut {
@@ -899,69 +918,69 @@
   }
 
   .music-rubric__ambient-singer {
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.32cqw;
 
-    font-size: 0.42rem;
+    font-size: 1.36cqw;
   }
 
   .music-rubric__ambient-line {
     max-width: 20ch;
 
-    font-size: clamp(1.35rem, 7vw, 2rem);
+    font-size: clamp(4.38cqw, 7vw, 6.49cqw);
     line-height: 0.9;
   }
 
   /* Drawer */
 
   .music-rubric__lyrics-drawer {
-    padding: 0.6rem;
+    padding: 1.95cqw;
 
     touch-action: pan-y;
   }
 
   .music-rubric__lyrics-drawer-head {
-    padding-bottom: 0.4rem;
+    padding-bottom: 1.3cqw;
   }
 
   .music-rubric__drawer-kicker {
-    font-size: 0.45rem;
+    font-size: 1.46cqw;
   }
 
   .music-rubric__lyrics-drawer-head h3 {
-    font-size: 1.15rem;
+    font-size: 3.73cqw;
   }
 
   .music-rubric__drawer-close {
-    width: 2rem;
+    width: 6.49cqw;
 
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
 
   .music-rubric__drawer-close svg {
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 2.92cqw;
+    height: 2.92cqw;
   }
 
   .music-rubric__lyrics-window {
     padding:
-            2.5rem
-            0.15rem
-            3rem;
+            8.11cqw
+            0.49cqw
+            9.74cqw;
 
     touch-action: pan-y;
   }
 
   .music-rubric__lyric-line {
     grid-template-columns:
-      4rem
+      12.98cqw
       minmax(0, 1fr);
 
-    gap: 0.35rem;
+    gap: 1.14cqw;
 
     padding:
-            0.36rem
-            0.15rem;
+            1.17cqw
+            0.49cqw;
 
     transform: none;
 
@@ -974,76 +993,64 @@
   }
 
   .music-rubric__lyric-singer {
-    font-size: 0.44rem;
+    font-size: 1.43cqw;
   }
 
   .music-rubric__lyric-text {
-    font-size: 0.76rem;
+    font-size: 2.47cqw;
     line-height: 1.3;
   }
 
   .music-rubric__lyric-line[data-active="true"]
   .music-rubric__lyric-text {
-    font-size: 0.84rem;
+    font-size: 2.73cqw;
   }
-}
 
-@media (max-width: 420px) {
+
   .music-rubric__hero {
     grid-template-columns:
       minmax(0, 0.64fr)
       minmax(0, 1.36fr);
 
-    column-gap: 0.8rem;
+    column-gap: 2.6cqw;
 
-    padding: 0.5rem;
+    padding: 1.62cqw;
   }
 
   .music-rubric__disc {
-    width: clamp(88px, 27vw, 112px);
+    width: clamp(17.85cqw, 27vw, 22.72cqw);
   }
 
   .music-rubric__player {
-    padding-top: 1.4rem;
-    padding-left: 0.15rem;
+    padding-top: 4.54cqw;
+    padding-left: 0.49cqw;
   }
 
   .music-rubric__title {
-    font-size: clamp(0.92rem, 4.8vw, 1.14rem);
+    font-size: clamp(2.99cqw, 4.8vw, 3.7cqw);
   }
 
   .music-rubric__credits {
-    margin-top: 0.3rem;
+    margin-top: 0.97cqw;
 
-    font-size: 0.4rem;
+    font-size: 1.3cqw;
     line-height: 1.25;
   }
 
   .music-rubric__transport {
-    width: 2.15rem;
+    width: 6.98cqw;
   }
 
   .music-rubric__controls {
-    gap: 0.4rem;
+    gap: 1.3cqw;
   }
 
   .music-rubric__lyrics-toggle {
-    top: 0.35rem;
-    right: 0.35rem;
+    top: 1.14cqw;
+    right: 1.14cqw;
 
-    padding: 0.26rem 0.4rem;
+    padding: 0.84cqw 1.3cqw;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .music-rubric__disc-image {
-    animation: none;
-  }
-
-  .music-rubric__lyrics-window {
-    scroll-behavior: auto;
-  }
-}
 
 @media print {
   .music-rubric__transport,

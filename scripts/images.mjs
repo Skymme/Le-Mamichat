@@ -13,9 +13,9 @@
  * carte, eux, doivent garder leur definition -- on les ouvre a la loupe pour
  * lire l'ecriture.
  *
- * PNG 8 bits truecolor non entrelace uniquement (c'est ce que produisent nos
- * exports). Reduction par moyenne de boite : pour un agrandissement il
- * faudrait autre chose, mais on ne fait que reduire.
+ * PNG 8 bits non entrelace, avec ou sans canal alpha. Reduction par moyenne
+ * de boite : pour un agrandissement il faudrait autre chose, mais on ne fait
+ * que reduire.
  */
 import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs'
 import { join } from 'node:path'
@@ -59,6 +59,7 @@ function decode(file) {
   const idat = []
   let width = 0
   let height = 0
+  let canaux = 3
   let pos = 8
 
   while (pos < buf.length) {
@@ -68,7 +69,8 @@ function decode(file) {
     if (type === 'IHDR') {
       width = data.readUInt32BE(0)
       height = data.readUInt32BE(4)
-      if (data[8] !== 8 || data[9] !== 2 || data[12] !== 0) return null
+      if (data[8] !== 8 || (data[9] !== 2 && data[9] !== 6) || data[12] !== 0) return null
+      canaux = data[9] === 6 ? 4 : 3
     } else if (type === 'IDAT') {
       idat.push(data)
     } else if (type === 'IEND') break
@@ -76,7 +78,7 @@ function decode(file) {
   }
 
   const raw = inflateSync(Buffer.concat(idat))
-  const bpp = 3
+  const bpp = canaux
   const stride = width * bpp
   const px = Buffer.alloc(height * stride)
 
@@ -105,12 +107,12 @@ function decode(file) {
     }
   }
 
-  return { width, height, px }
+  return { width, height, px, canaux }
 }
 
 /** Moyenne de boite : chaque pixel d'arrivee est la moyenne de sa zone source. */
-function resample({ width, height, px }, w, h) {
-  const out = Buffer.alloc(w * h * 3)
+function resample({ width, height, px, canaux }, w, h) {
+  const out = Buffer.alloc(w * h * canaux)
   const sx = width / w
   const sy = height / h
 
@@ -122,25 +124,19 @@ function resample({ width, height, px }, w, h) {
       const x0 = Math.floor(x * sx)
       const x1 = Math.max(x0 + 1, Math.min(width, Math.ceil((x + 1) * sx)))
 
-      let r = 0
-      let g = 0
-      let b = 0
+      const somme = [0, 0, 0, 0]
       let n = 0
       for (let yy = y0; yy < y1; yy += 1) {
-        let o = (yy * width + x0) * 3
+        let o = (yy * width + x0) * canaux
         for (let xx = x0; xx < x1; xx += 1) {
-          r += px[o]
-          g += px[o + 1]
-          b += px[o + 2]
-          o += 3
+          for (let c = 0; c < canaux; c += 1) somme[c] += px[o + c]
+          o += canaux
           n += 1
         }
       }
 
-      const d = (y * w + x) * 3
-      out[d] = (r / n + 0.5) | 0
-      out[d + 1] = (g / n + 0.5) | 0
-      out[d + 2] = (b / n + 0.5) | 0
+      const d = (y * w + x) * canaux
+      for (let c = 0; c < canaux; c += 1) out[d + c] = (somme[c] / n + 0.5) | 0
     }
   }
 
@@ -148,17 +144,17 @@ function resample({ width, height, px }, w, h) {
 }
 
 /** Filtre Paeth sur chaque ligne : c'est celui qui comprime le mieux une photo. */
-function encode(file, px, w, h) {
-  const stride = w * 3
+function encode(file, px, w, h, canaux) {
+  const stride = w * canaux
   const raw = Buffer.alloc(h * (stride + 1))
 
   for (let y = 0; y < h; y += 1) {
     const off = y * (stride + 1)
     raw[off] = 4
     for (let i = 0; i < stride; i += 1) {
-      const a = i >= 3 ? px[y * stride + i - 3] : 0
+      const a = i >= canaux ? px[y * stride + i - canaux] : 0
       const b = y > 0 ? px[(y - 1) * stride + i] : 0
-      const c = y > 0 && i >= 3 ? px[(y - 1) * stride + i - 3] : 0
+      const c = y > 0 && i >= canaux ? px[(y - 1) * stride + i - canaux] : 0
       const p = a + b - c
       const pa = Math.abs(p - a)
       const pb = Math.abs(p - b)
@@ -172,7 +168,7 @@ function encode(file, px, w, h) {
   ihdr.writeUInt32BE(w, 0)
   ihdr.writeUInt32BE(h, 4)
   ihdr[8] = 8
-  ihdr[9] = 2
+  ihdr[9] = canaux === 4 ? 6 : 2
 
   writeFileSync(file, Buffer.concat([
     SIG,
@@ -206,7 +202,7 @@ for (const dossier of dossiers) {
     const avant = statSync(fichier).size
     const w = MAX_WIDTH
     const h = Math.max(1, Math.round((img.height * w) / img.width))
-    encode(fichier, resample(img, w, h), w, h)
+    encode(fichier, resample(img, w, h), w, h, img.canaux)
     const apres = statSync(fichier).size
 
     avantTotal += avant

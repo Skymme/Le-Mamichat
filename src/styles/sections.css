@@ -179,10 +179,14 @@
 
 /* =========================================================
    L'ONGLET DE TRANCHE
+   Une hauteur = une rubrique. Le pas doit rester assez court
+   pour que la derniere languette tienne dans la page : avec
+   douze rubriques, 9 cqw amenent la douzieme a 106 cqw, sous
+   les 135 cqw de hauteur utile.
    ========================================================= */
 .thumb {
   position: absolute;
-  top: calc(8cqw + var(--sec-i, 0) * 11.5cqw);
+  top: calc(7cqw + var(--sec-i, 0) * 9cqw);
   z-index: 4;
   padding: 1.5cqw 0.62cqw 1.5cqw 0.75cqw;
   background: var(--sec);
